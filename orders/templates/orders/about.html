@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block main %}
+<section class="about_section layout_padding2-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading_style">О нас</h2>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'images/a-truck.jpg' %}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6 about_detail-container">
+                <div class="about_detail-box">
+                    <h3>Пассажирские перевозки</h3>
+                    <p>
+                        Наша команда состоит из опытных водителей и профессиональных диспетчеров, которые всегда готовы
+                        помочь вам выбрать наиболее удобное время и место для поездки. Мы предлагаем широкий выбор
+                        автомобилей различных классов, чтобы удовлетворить потребности каждого клиента. Наша цель —
+                        обеспечить безопасность и комфорт во время вашей поездки.
+                    </p>
+                    <div class="d-flex  justify-content-end">
+                        <a href="index.html" class="quote-btn about-btn">
+                            <img src="{% static 'images/white-next.png' %}" alt="">
+                            <span>На главную</span>
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

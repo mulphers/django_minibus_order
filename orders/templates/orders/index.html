@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block main %}
+<section class=" slider_section ">
+    <div style="background-image: url({% static 'images/main-bg.jpg' %});  background-position:center center;  background-size:cover">
+        <div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="slider_item-container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="slider_item-detail">
+                                        <div>
+                                            <h1>Заказать транспорт <br>прямо сейчас</h1>
+                                            <div class="d-flex">
+                                                <div>
+                                                    <a href="" class="read-btn">
+                                                        <span>Заказать</span>
+                                                        <img src="{% static 'images/white-next.png' %}" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="slider_img-box">
+                                        <img src="{% static 'images/truck.png' %}" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+
+<section class="about_section ">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading_style">Чем мы занимаеся?</h2>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'images/map.jpg' %}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6 about_detail-container">
+                <div class="about_detail-box">
+                    <h3>Пассажирские перевозки</h3>
+                    <p>
+                        Компания "For example" предоставляет услуги по перевозке пассажиров из города A в город B. Мы
+                        гарантируем комфорт и безопасность наших клиентов, используя только самые современные
+                        автомобили. Наша команда профессиональных водителей всегда готова к любым ситуациям на дороге и
+                        обеспечивает быструю доставку пассажиров в пункт назначения. Вы можете быть уверены, что мы
+                        сделаем все возможное для того, чтобы ваш опыт путешествия был максимально приятным и удобным.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
