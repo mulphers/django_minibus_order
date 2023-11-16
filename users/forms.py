@@ -1,11 +1,13 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import forms as f
+from django.core.validators import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+from common.validators import phone_number_validator
 from users.models import User
 
 
-class SignInForm(AuthenticationForm):
+class SignInForm(f.AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control py-4',
         'placeholder': _('Enter your username')
@@ -21,7 +23,7 @@ class SignInForm(AuthenticationForm):
         fields = ('username', 'password')
 
 
-class SignUpForm(UserCreationForm):
+class SignUpForm(f.UserCreationForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control py-4',
         'id': 'inputFirstName',
@@ -61,3 +63,30 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+
+
+class ProfileUpdateForm(f.UserChangeForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control py-4',
+        'id': 'inputFirstName'
+    }))
+
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control py-4',
+        'id': 'inputLastName'
+    }))
+
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control py-4',
+        'id': 'inputPhoneNumber'
+    }))
+
+    image = forms.ImageField(widget=forms.FileInput(attrs={
+        'class': 'custom-file-label',
+        'id': 'userAvatar',
+        'size': '50'
+    }), required=False)
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'phone_number', 'image')
