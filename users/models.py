@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from base.models import Base
-from orders.validators import phone_number_validator
+from common.validators import phone_number_validator
 
 
 class Employee(Base):
