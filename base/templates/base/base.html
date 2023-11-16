@@ -55,7 +55,7 @@
                             <a class="nav-link" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">О нас</a>
+                            <a class="nav-link" href="{% url 'about_us' %}">О нас</a>
                         </li>
                         <li class="nav-item ">
                             {% if user.is_authenticated %}
@@ -110,7 +110,7 @@
                                             <a class="nav-link" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="about.html">О нас</a>
+                                            <a class="nav-link" href="{% url 'about_us' %}">О нас</a>
                                         </li>
                                         <li class="nav-item ">
                                             {% if user.is_authenticated %}
@@ -148,9 +148,10 @@
                     <span>For example</span>
                 </div>
             </div>
-            <div class="col-md-3 info_address">
-                <h5>Наш адрес</h5>
-                <p>For example</p>
+            <div class="col-md-3 info_news">
+                <h5>
+                    Наши контакты
+                </h5>
                 <p>+375xxxxxxxxx</p>
                 <p>+375xxxxxxxxx</p>
                 <p><a href="">forexample@gmail.com</a></p>
@@ -162,36 +163,18 @@
                         <ul>
                             <h5>Ссылки</h5>
                             <li>
-                                <a href="index.html">Главная</a>
+                                <a href="{% url 'index' %}">Главная</a>
                             </li>
                             <li>
-                                <a href="about.html">О нас</a>
+                                <a href="{% url 'about_us' %}">О нас</a>
                             </li>
-                            <li>
-                                <a href="profile.html">Профиль</a>
-                            </li>
-
                         </ul>
                     </nav>
                 </div>
             </div>
-            <div class="col-md-3 info_news">
-                <h5>
-                    Newsletter
-                </h5>
-                <form action="">
-                    <div>
-                        <input type="text" placeholder="Your Name">
-                    </div>
-                    <div>
-                        <input type="email" placeholder="Email">
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="submit">
-                            Subscribe
-                        </button>
-                    </div>
-                </form>
+             <div class="col-md-3 info_address">
+                <h5>Наш адрес</h5>
+                <p>For example</p>
             </div>
         </div>
     </div>
