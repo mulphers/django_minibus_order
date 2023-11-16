@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 
 from common.mixins import TitleMixin
 from users import forms, models
@@ -13,7 +13,7 @@ class SignInView(TitleMixin, LoginView):
     form_class = forms.SignInForm
 
     def get_redirect_url(self):
-        pass
+        return reverse_lazy('user:profile', kwargs={'pk': self.request.user.id})
 
 
 class SignUpView(TitleMixin, CreateView):
@@ -22,3 +22,13 @@ class SignUpView(TitleMixin, CreateView):
     template_name = 'users/sign_up.html'
     title = _("Sign up")
     success_url = reverse_lazy('user:sign_in')
+
+
+class ProfileView(TitleMixin, UpdateView):
+    model = models.User
+    form_class = forms.ProfileUpdateForm
+    template_name = 'users/profile.html'
+    title = _('Profile')
+
+    def get_success_url(self):
+        return self.request.META.get('HTTP_REFERER')
