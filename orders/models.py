@@ -6,6 +6,11 @@ from users import models as users_models
 
 
 class Route(Base):
+    class FromWhereToWhere(models.TextChoices):
+        route_1 = 'RE1', _('For example A')
+        route_2 = 'RE2', _('For example B')
+
+    route = models.CharField(max_length=3, choices=FromWhereToWhere.choices, default=FromWhereToWhere.route_1)
     departure_datetime = models.DateTimeField()
     driver = models.ForeignKey(to=users_models.Employee, on_delete=models.SET_NULL, blank=True, null=True)
     number_of_seats = models.PositiveIntegerField(default=15)

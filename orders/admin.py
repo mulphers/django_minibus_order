@@ -6,6 +6,7 @@ from orders.models import Order, Route
 @admin.register(Route)
 class RouteAdmin(admin.ModelAdmin):
     fields = (
+        'route',
         'driver',
         'departure_datetime',
         'number_of_seats'
