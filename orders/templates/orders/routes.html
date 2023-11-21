@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+
+{% block main %}
+<section>
+    <div class="container pt-5">
+        <div class="text-center mt-5">
+            <h1>Онлайн бронирование</h1>
+            <div class="orders mt-5">
+                {% if object_list %}
+                <table class="table">
+                    <thead>
+                    <tr class="table-light">
+                        <th scope="col">Маршрут</th>
+                        <th scope="col">Время отправления</th>
+                        <th scope="col">Свободных мест</th>
+                        <th scope="col">Место посадки</th>
+                        <th scope="col">Действие</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for route in object_list %}
+                    <tr class="table-exp">
+                        <th scope="row">{{ route.get_route_display }}</th>
+                        <td>{{ route.departure_datetime }}</td>
+                        <td>{{ route.number_of_seats }}</td>
+                        <td>
+                            <select class="select-css">
+                                <option selected="selected">Место 1</option>
+                                <option>Место 2</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a href="#">Заказать</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>Не найдено автомобилей на выбранную дату</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
