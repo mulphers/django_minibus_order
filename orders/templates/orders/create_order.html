@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+
+{% block main %}
+<div class="col-lg-7" style="margin-left:auto; margin-right:auto;">
+    <h4 class="mt-3 mb-3" style="text-align: center;">Оформление</h4>
+    <form method="POST" style="margin: 10px 20px 30px 40px;">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="small mb-1" for="inputFirstName">Имя</label>
+                    <input class="form-control py-4" id="inputFirstName" type="text"
+                           value="{{ request.user.first_name }}" disabled/>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="small mb-1" for="inputLastName">Фамилия</label>
+                    <input class="form-control py-4" id="inputLastName" type="text"
+                           value="{{ request.user.last_name }}" disabled/>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-6">
+                <label class="small mb-1" for="inputUsername">Маршрут</label>
+                <input class="form-control py-4" id="inputRoure" type="text"
+                       aria-describedby="usernameHelp"
+                       value="{{ user.username }}" disabled/>
+            </div>
+            <div class="col-lg-6">
+                <label class="small mb-1" for="inputEmailAddress">Время отправления</label>
+                <input class="form-control py-4" id="inputDepartureDatetime" type="text"
+                       aria-describedby="emailHelp"
+                       value="{{ user.email }}" disabled/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-2">
+                <label class="small mb-1" for="{{ form.landing_site.id_for_label }}">Место посадки</label>
+                {{ form.landing_site }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-12" style="margin-top: 33px;">
+                <input class="btn btn-info btn-block" type="submit" value="Подтвердить"
+                       style="background-color: skyblue; border-color: skyblue;">
+            </div>
+
+        </div>
+    </form>
+</div>
+{% endblock %}

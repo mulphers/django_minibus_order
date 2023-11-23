@@ -67,11 +67,13 @@
         </div>
         <div class="form-row">
             <div class="col-lg-12" style="margin-top: 33px;">
-                <input class="btn btn-info btn-block" type="submit" value="Сохранить"
-                       style="background-color: skyblue; border-color: skyblue;">
+                <input class="btn btn-info btn-block" type="submit" value="Сохранить">
+                <a href="{% url 'order:orders' %}" class="btn btn-info btn-block">
+                    Мои заказы
+                </a>
                 <a href="{% url 'user:sign_out' %}" class="btn btn-info btn-block">
-                Выйти
-            </a>
+                    Выйти
+                </a>
             </div>
 
         </div>
