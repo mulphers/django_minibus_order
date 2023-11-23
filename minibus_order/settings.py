@@ -16,7 +16,13 @@ import environ
 
 env = environ.Env(
     SECRET_KEY=str,
-    DEBUG=bool
+    DEBUG=bool,
+
+    DB_NAME=str,
+    DB_USER=str,
+    DB_PASSWORD=str,
+    DB_HOST=str,
+    DB_PORT=str
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -87,8 +93,12 @@ WSGI_APPLICATION = 'minibus_order.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT')
     }
 }
 
