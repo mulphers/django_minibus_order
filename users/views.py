@@ -3,34 +3,46 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, UpdateView
 
-from common import mixins as common_mixins
-from users import forms
-from users import mixins as users_mixins
-from users import models
+from common.mixins import TitleMixin
+from users.forms import ProfileUpdateForm, SignInForm, SignUpForm
+from users.mixins import LogoutRequiredMixin, UserCheckMixin
+from users.models import User
 
 
-class SignInView(common_mixins.TitleMixin, users_mixins.LogoutRequiredMixin, LoginView):
+class SignInView(
+    TitleMixin,
+    LogoutRequiredMixin,
+    LoginView
+):
     template_name = 'users/sign_in.html'
     title = _('Sign in')
-    form_class = forms.SignInForm
+    form_class = SignInForm
 
     def get_redirect_url(self):
         return reverse_lazy('user:profile', kwargs={'pk': self.request.user.id})
 
 
-class SignUpView(common_mixins.TitleMixin, users_mixins.LogoutRequiredMixin, CreateView):
-    model = models.User
-    form_class = forms.SignUpForm
+class SignUpView(
+    TitleMixin,
+    LogoutRequiredMixin,
+    CreateView
+):
     template_name = 'users/sign_up.html'
     title = _("Sign up")
+    model = User
+    form_class = SignUpForm
     success_url = reverse_lazy('user:sign_in')
 
 
-class ProfileView(common_mixins.TitleMixin, users_mixins.UserCheckMixin, UpdateView):
-    model = models.User
-    form_class = forms.ProfileUpdateForm
+class ProfileView(
+    TitleMixin,
+    UserCheckMixin,
+    UpdateView
+):
     template_name = 'users/profile.html'
     title = _('Profile')
+    model = User
+    form_class = ProfileUpdateForm
 
     def get_success_url(self):
         return self.request.META.get('HTTP_REFERER')

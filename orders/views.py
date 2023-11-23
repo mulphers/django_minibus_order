@@ -13,23 +13,37 @@ from orders.services import (add_parameters_form, check_departure_date,
                              increase_number_of_seats, reduce_number_of_seats)
 
 
-class IndexView(TitleMixin, TemplateView):
+class IndexView(
+    TitleMixin,
+    TemplateView
+):
     template_name = 'orders/index.html'
     title = _('Main')
 
 
-class AboutUsView(TitleMixin, TemplateView):
+class AboutUsView(
+    TitleMixin,
+    TemplateView
+):
     template_name = 'orders/about.html'
     title = _('About us')
 
 
-class SearchRoutesView(TitleMixin, LoginRequiredMixin, FormView):
+class SearchRoutesView(
+    TitleMixin,
+    LoginRequiredMixin,
+    FormView
+):
     template_name = 'orders/search_routes.html'
     title = _('Search route')
     form_class = SearchRoutesForms
 
 
-class RoutesView(TitleMixin, LoginRequiredMixin, ListView):
+class RoutesView(
+    TitleMixin,
+    LoginRequiredMixin,
+    ListView
+):
     template_name = 'orders/routes.html'
     title = _('Routes')
     model = Route
@@ -46,7 +60,11 @@ class RoutesView(TitleMixin, LoginRequiredMixin, ListView):
         return ()
 
 
-class CreateOrderView(TitleMixin, CheckCreateOrderMixin, CreateView):
+class CreateOrderView(
+    TitleMixin,
+    CheckCreateOrderMixin,
+    CreateView
+):
     template_name = 'orders/create_order.html'
     title = _('Confirmation')
     model = Order
@@ -60,7 +78,10 @@ class CreateOrderView(TitleMixin, CheckCreateOrderMixin, CreateView):
         return HttpResponseRedirect('/order/orders')
 
 
-class CancelOrderView(CheckCancelOrderMixin, DeleteView):
+class CancelOrderView(
+    CheckCancelOrderMixin,
+    DeleteView
+):
     model = Order
     success_url = reverse_lazy('order:orders')
 
@@ -69,7 +90,11 @@ class CancelOrderView(CheckCancelOrderMixin, DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class OrdersView(TitleMixin, LoginRequiredMixin, ListView):
+class OrdersView(
+    TitleMixin,
+    LoginRequiredMixin,
+    ListView
+):
     template_name = 'users/orders.html'
     title = _('Orders')
     model = Order

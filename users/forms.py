@@ -1,9 +1,7 @@
 from django import forms
 from django.contrib.auth import forms as f
-from django.core.validators import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from common.validators import phone_number_validator
 from users.models import User
 
 
