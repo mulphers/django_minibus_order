@@ -23,13 +23,15 @@ class AboutUsView(TitleMixin, TemplateView):
     title = _('About us')
 
 
-class SearchRoutesView(LoginRequiredMixin, FormView):
+class SearchRoutesView(TitleMixin, LoginRequiredMixin, FormView):
     template_name = 'orders/search_routes.html'
+    title = _('Search route')
     form_class = SearchRoutesForms
 
 
-class RoutesView(LoginRequiredMixin, ListView):
+class RoutesView(TitleMixin, LoginRequiredMixin, ListView):
     template_name = 'orders/routes.html'
+    title = _('Routes')
     model = Route
 
     def get_queryset(self):
@@ -44,8 +46,9 @@ class RoutesView(LoginRequiredMixin, ListView):
         return ()
 
 
-class CreateOrderView(CheckCreateOrderMixin, CreateView):
+class CreateOrderView(TitleMixin, CheckCreateOrderMixin, CreateView):
     template_name = 'orders/create_order.html'
+    title = _('Confirmation')
     model = Order
     form_class = CreateOrderForm
 
@@ -66,8 +69,9 @@ class CancelOrderView(CheckCancelOrderMixin, DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class OrdersView(LoginRequiredMixin, ListView):
+class OrdersView(TitleMixin, LoginRequiredMixin, ListView):
     template_name = 'users/orders.html'
+    title = _('Orders')
     model = Order
 
     def get_queryset(self):
