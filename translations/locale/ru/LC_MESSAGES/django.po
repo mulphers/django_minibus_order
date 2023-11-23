@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-23 18:30+0300\n"
+"POT-Creation-Date: 2023-11-23 18:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\common\validators.py:4
+msgid ""
+"The phone number must be entered in the format:\n"
+"1. +375XXXXXXXXX\n"
+"2. 80XXXXXXXXX"
+msgstr "Номер телефона должен быть введен в формате:\n"
+"1. +375XXXXXXXXX\n"
+"2. 80XXXXXXXXX"
 
 #: .\orders\models.py:12
 msgid "For example A"
@@ -72,27 +81,31 @@ msgstr "Поиск маршрута"
 msgid "Confirmation"
 msgstr "Подтверждение"
 
-#: .\users\forms.py:11 .\users\forms.py:40
+#: .\users\forms.py:12 .\users\forms.py:41
 msgid "Enter your username"
 msgstr "Введите логин"
 
-#: .\users\forms.py:16 .\users\forms.py:52
+#: .\users\forms.py:17 .\users\forms.py:59
 msgid "Enter password"
 msgstr "Введите пароль"
 
-#: .\users\forms.py:28
+#: .\users\forms.py:29
 msgid "Enter your name"
 msgstr "Введите имя"
 
-#: .\users\forms.py:34
+#: .\users\forms.py:35
 msgid "Enter last name"
 msgstr "Введите фамилию"
 
-#: .\users\forms.py:46
+#: .\users\forms.py:47
 msgid "Enter your email address"
 msgstr "Введите адрес электронной почты"
 
-#: .\users\forms.py:58
+#: .\users\forms.py:53
+msgid "Enter your phone number"
+msgstr "Введите номер телефона"
+
+#: .\users\forms.py:65
 msgid "Confirm the password"
 msgstr "Подтвердите пароль"
 
