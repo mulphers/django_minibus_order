@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -21,6 +23,9 @@ class Route(Base):
 
     def __str__(self):
         return f'{self.driver} | {self.departure_datetime:%d-%m-%Y %H:%M}'
+
+    def is_overdue_route(self):
+        return self.departure_datetime.date() < date.today()
 
 
 class Order(Base):
